@@ -14,24 +14,72 @@ var uppercaseChar = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O'
 var numericChar = ['1','2','3','4','5','6','7','8','9','0'];
 var specialChar = ['!','@','#','$','%','^','&','*','(',')','_','+','?','<','>','~','|'];
 
+var generatePassword = function() {
+  var chosenChar = "";
+  // If user confirms the following selections, add selections to chosenChar array
+  if(lowercaseChar === true) {
+    chosenChar += lowercaseChar;
+  }
+  if(uppercaseChar === true) {
+    chosenChar += uppercaseChar;
+  }
+  if(numericChar === true) {
+    chosenChar += numericChar;
+  }
+  if(specialChar === true) {
+    chosenChar += specialChar;
+  }
+};
+
 function generatePassword() {
+//Ask user to input how many characters they would like their password to be.
 passwordLength = window.prompt("Please choose your password length between 8-128 characters.");
 var length = parseInt(passwordLength);
 console.log(length, typeof length);
 if(length < 8 || length > 128) {
   window.alert("You must choose a number between 8-128! Please try again.");
-
+} else {
+  window.alert("Invalid selection! You must enter a number between 8-128.");
 }
 
 
-
+//Ask if user wants password to include lowercase letters.
 lowercaseChar = window.confirm("Would you like your password to contain lowercase characters?");
+  if(lowercaseChar) {
+    window.alert("Your password will include lowercase characters.");
+  } else {
+    window.alert("Your password will NOT include lowercase characters.");
+    
+  }
+
+//Ask if user wants password to include uppercase letters.
 uppercaseChar = window.confirm("Would you like your password to contain uppercase characters?");
+  if(uppercaseChar) {
+    window.alert("Your password will include uppercase characters.");
+  } else {
+  window.alert("Your password will NOT include uppercase characters.");
+  
+  }
+
+  //Ask if user wants password to include numbers.
 numericChar = window.confirm("Would you like your password to contain numbers?");
-specialChar = window.confirm("Would you like your password to contain special characters?");
-}
+  if(numericChar) {
+    window.alert("Your password will include numbers.");
+  } else {
+    window.alert("Your password will NOT include numbers.");
+    
+  }
+  
+  //Ask if user wants password to include special characters.
+  specialChar = window.confirm("Would you like your password to contain special characters?");
+    if(uppercaseChar) {
+      window.alert("Your password will include special characters.");
+    } else {
+      window.alert("Your password will NOT include special characters.");
+      
+  }
 
-
+};
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
