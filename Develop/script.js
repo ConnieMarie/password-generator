@@ -7,50 +7,61 @@
 //Generate random password
 
 //Make arrays for lowercase, uppercase, numbers, and special caractors
-//Make for loops to randomize charactors
+//Make define variables to randomize charactors
 
 var lowercaseChar = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 var uppercaseChar = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 var numericChar = ['1','2','3','4','5','6','7','8','9','0'];
 var specialChar = ['!','@','#','$','%','^','&','*','(',')','_','+','?','<','>','~','|'];
 
-var generatePassword = function() {
-  var chosenChar = "";
-  // If user confirms the following selections, add selections to chosenChar array
-  if(lowercaseChar === true) {
-    chosenChar += lowercaseChar;
-  }
-  if(uppercaseChar === true) {
-    chosenChar += uppercaseChar;
-  }
-  if(numericChar === true) {
-    chosenChar += numericChar;
-  }
-  if(specialChar === true) {
-    chosenChar += specialChar;
-  }
-};
+function getRandomChar() {
+var getRandomLower = Math.floor(Math.random() * lowercaseChar.length);
+var getRandomUpper = Math.floor(Math.random() * uppercaseChar.length);
+var getRandomNumber = Math.floor(Math.random() * numericChar.length);
+var getRandomSpecial= Math.floor(Math.random() * specialChar.length);
+}
+
+
+var chosenChar = "";
+// If user confirms the following selections, add selections to chosenChar array
+if(lowercaseChar === true) {
+  chosenChar += lowercaseChar;
+}
+if(uppercaseChar === true) {
+  chosenChar += uppercaseChar;
+}
+if(numericChar === true) {
+  chosenChar += numericChar;
+}
+if(specialChar === true) {
+  chosenChar += specialChar;
+}
+//*how to at passwordLength to this*
+
+
 
 function generatePassword() {
+
 //Ask user to input how many characters they would like their password to be.
 passwordLength = window.prompt("Please choose your password length between 8-128 characters.");
 var length = parseInt(passwordLength);
 console.log(length, typeof length);
 if(length < 8 || length > 128) {
   window.alert("You must choose a number between 8-128! Please try again.");
-} else {
-  window.alert("Invalid selection! You must enter a number between 8-128.");
-}
+} //*how to loop this in case of clicking cancel*
 
 
+
+//**How to call getRandomChar to these prompts */
 //Ask if user wants password to include lowercase letters.
 lowercaseChar = window.confirm("Would you like your password to contain lowercase characters?");
   if(lowercaseChar) {
     window.alert("Your password will include lowercase characters.");
   } else {
     window.alert("Your password will NOT include lowercase characters.");
-    
+     
   }
+  console.log(lowercaseChar);
 
 //Ask if user wants password to include uppercase letters.
 uppercaseChar = window.confirm("Would you like your password to contain uppercase characters?");
@@ -59,8 +70,10 @@ uppercaseChar = window.confirm("Would you like your password to contain uppercas
   } else {
   window.alert("Your password will NOT include uppercase characters.");
   
+  
   }
-
+  console.log(uppercaseChar);
+  
   //Ask if user wants password to include numbers.
 numericChar = window.confirm("Would you like your password to contain numbers?");
   if(numericChar) {
@@ -69,7 +82,7 @@ numericChar = window.confirm("Would you like your password to contain numbers?")
     window.alert("Your password will NOT include numbers.");
     
   }
-  
+  console.log(numericChar);
   //Ask if user wants password to include special characters.
   specialChar = window.confirm("Would you like your password to contain special characters?");
     if(uppercaseChar) {
@@ -78,8 +91,10 @@ numericChar = window.confirm("Would you like your password to contain numbers?")
       window.alert("Your password will NOT include special characters.");
       
   }
-
+  console.log(specialChar);
 };
+
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
