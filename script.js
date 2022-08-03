@@ -23,7 +23,6 @@ function generatePassword() {
 //Ask user to input how many characters they would like their password to be.
 passwordLength = window.prompt("Please choose your password length between 8-128 characters.");
 var length = parseInt(passwordLength);
-console.log(length, typeof length);
 if(length < 8 || length > 128 || !length) {
   window.alert("You must choose a number between 8-128! Please try again.");
   return generatePassword();
@@ -35,11 +34,9 @@ var lowercaseCharConfirm = window.confirm("Would you like your password to conta
     window.alert("Your password will include lowercase characters.");
     //Store selection in chosenChar array
       chosenChar = chosenChar.concat(lowercaseChar);
-      console.log(chosenChar);
   } else {
     window.alert("Your password will NOT include lowercase characters.");
   }
-  console.log(lowercaseChar);
 
 //Ask if user wants password to include uppercase letters.
 var uppercaseCharConfirm = window.confirm("Would you like your password to contain uppercase characters?");
@@ -47,11 +44,9 @@ var uppercaseCharConfirm = window.confirm("Would you like your password to conta
     window.alert("Your password will include uppercase characters.");
     //Store selection in chosenChar array
     chosenChar = chosenChar.concat(uppercaseChar);
-      console.log(chosenChar);
   } else {
   window.alert("Your password will NOT include uppercase characters.");
   }
-  console.log(uppercaseChar);
   
   //Ask if user wants password to include numbers.
 var numericCharConfirm = window.confirm("Would you like your password to contain numbers?");
@@ -59,11 +54,9 @@ var numericCharConfirm = window.confirm("Would you like your password to contain
     window.alert("Your password will include numbers.");
     //Store selection in chosenChar array
     chosenChar = chosenChar.concat(numericChar);
-      console.log(chosenChar);
   } else {
     window.alert("Your password will NOT include numbers.");
   }
-  console.log(numericChar);
   
   //Ask if user wants password to include special characters.
   var specialCharConfirm = window.confirm("Would you like your password to contain special characters?");
@@ -71,12 +64,10 @@ var numericCharConfirm = window.confirm("Would you like your password to contain
       window.alert("Your password will include special characters.");
       //Store selection in chosenChar array
       chosenChar = chosenChar.concat(specialChar);
-      console.log(chosenChar);
     } else {
       window.alert("Your password will NOT include special characters.");
   }
-  console.log(specialChar);
-
+  //Loop to randomize user selections
   for (let i = 0; i < passwordLength; i++) {
     pw += chosenChar[Math.floor(Math.random() * chosenChar.length)]
   }
