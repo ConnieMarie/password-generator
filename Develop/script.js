@@ -14,50 +14,35 @@ var uppercaseChar = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O'
 var numericChar = ['1','2','3','4','5','6','7','8','9','0'];
 var specialChar = ['!','@','#','$','%','^','&','*','(',')','_','+','?','<','>','~','|'];
 
-function getRandomChar() {
-var getRandomLower = Math.floor(Math.random() * lowercaseChar.length);
-var getRandomUpper = Math.floor(Math.random() * uppercaseChar.length);
-var getRandomNumber = Math.floor(Math.random() * numericChar.length);
-var getRandomSpecial= Math.floor(Math.random() * specialChar.length);
-}
 
-
-var chosenChar = "";
+var chosenChar = [];
 // If user confirms the following selections, add selections to chosenChar array
-if(lowercaseChar === true) {
-  chosenChar += lowercaseChar;
-}
-if(uppercaseChar === true) {
-  chosenChar += uppercaseChar;
-}
-if(numericChar === true) {
-  chosenChar += numericChar;
-}
-if(specialChar === true) {
-  chosenChar += specialChar;
-}
-//*how to at passwordLength to this*
+
 
 
 
 function generatePassword() {
 
+  var pw = ""
 //Ask user to input how many characters they would like their password to be.
 passwordLength = window.prompt("Please choose your password length between 8-128 characters.");
 var length = parseInt(passwordLength);
 console.log(length, typeof length);
 if(length < 8 || length > 128 || !length) {
   window.alert("You must choose a number between 8-128! Please try again.");
-  return false;
+  return generatePassword();
 } //*how to loop this in case of clicking cancel*
 
 
 
 //**How to call getRandomChar to these prompts */
 //Ask if user wants password to include lowercase letters.
-lowercaseChar = window.confirm("Would you like your password to contain lowercase characters?");
-  if(lowercaseChar) {
+var lowercaseCharConfirm = window.confirm("Would you like your password to contain lowercase characters?");
+  if(lowercaseCharConfirm) {
     window.alert("Your password will include lowercase characters.");
+      chosenChar = chosenChar.concat(lowercaseChar);
+      console.log(chosenChar);
+    
   } else {
     window.alert("Your password will NOT include lowercase characters.");
      
@@ -65,9 +50,11 @@ lowercaseChar = window.confirm("Would you like your password to contain lowercas
   console.log(lowercaseChar);
 
 //Ask if user wants password to include uppercase letters.
-uppercaseChar = window.confirm("Would you like your password to contain uppercase characters?");
-  if(uppercaseChar) {
+var uppercaseCharConfirm = window.confirm("Would you like your password to contain uppercase characters?");
+  if(uppercaseCharConfirm) {
     window.alert("Your password will include uppercase characters.");
+    chosenChar = chosenChar.concat(uppercaseChar);
+      console.log(chosenChar);
   } else {
   window.alert("Your password will NOT include uppercase characters.");
   
@@ -76,23 +63,32 @@ uppercaseChar = window.confirm("Would you like your password to contain uppercas
   console.log(uppercaseChar);
   
   //Ask if user wants password to include numbers.
-numericChar = window.confirm("Would you like your password to contain numbers?");
-  if(numericChar) {
+var numericCharConfirm = window.confirm("Would you like your password to contain numbers?");
+  if(numericCharConfirm) {
     window.alert("Your password will include numbers.");
+    chosenChar = chosenChar.concat(numericChar);
+      console.log(chosenChar);
   } else {
     window.alert("Your password will NOT include numbers.");
     
   }
   console.log(numericChar);
   //Ask if user wants password to include special characters.
-  specialChar = window.confirm("Would you like your password to contain special characters?");
-    if(uppercaseChar) {
+  var specialCharConfirm = window.confirm("Would you like your password to contain special characters?");
+    if(specialCharConfirm) {
       window.alert("Your password will include special characters.");
+      chosenChar = chosenChar.concat(specialChar);
+      console.log(chosenChar);
     } else {
       window.alert("Your password will NOT include special characters.");
       
   }
   console.log(specialChar);
+  for (let i = 0; i < passwordLength; i++) {
+    pw += chosenChar[Math.floor(Math.random() * chosenChar.length)]
+  }
+
+  return pw;
 };
 
 
