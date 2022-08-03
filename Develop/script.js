@@ -46,8 +46,9 @@ function generatePassword() {
 passwordLength = window.prompt("Please choose your password length between 8-128 characters.");
 var length = parseInt(passwordLength);
 console.log(length, typeof length);
-if(length < 8 || length > 128) {
+if(length < 8 || length > 128 || !length) {
   window.alert("You must choose a number between 8-128! Please try again.");
+  return false;
 } //*how to loop this in case of clicking cancel*
 
 
